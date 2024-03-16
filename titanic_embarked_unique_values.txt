@@ -1,0 +1,4 @@
+Row(Embarked='Q')
+Row(Embarked='C')
+Row(Embarked='S')
+Row(Embarked=None)
