@@ -14,7 +14,7 @@ def load_titanic_dataset(spark, filename):
 
 # Question 4c, function to convert columns to float if needed
 def convert_columns_to_float(df):
-    float_columns = ["Fare"]
+    float_columns = ["Age", "Fare"]
     for column in float_columns:
         # Checking if column exists and can be cast to float
         if column in df.columns and df.schema[column].dataType != "float":
