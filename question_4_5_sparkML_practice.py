@@ -106,6 +106,6 @@ if __name__ == "__main__":
     
     # Export the cleaned Titanic dataset to a CSV file
     # Repartition the DataFrame to a single partition
-    cleaned_titanic_df = cleaned_titanic_df.repartition(1)
-    titanic_df.write.csv("working_files/cleaned_titanic_dataset.csv", header=True)
+    cleaned_titanic_df = titanic_df.repartition(1)
+    cleaned_titanic_df.write.csv("working_files/cleaned_titanic_dataset.csv", header=True)
 
