@@ -11,10 +11,11 @@ sc.setLogLevel("ERROR")
 
 # Question 2f, Function to write results to file
 def write_results(output, result):
-    if isinstance(output, str):
-        with open(output, "w") as file:
+    if isinstance(result, float):
+        output_path = output[0]  
+        with open(output_path + ".txt", "w") as file:  
             file.write(str(result))
-    elif isinstance(output, (list, tuple)):
+    elif isinstance(result, DataFrame):
         output_path = output[0]
         output_format = output[1]
         if output_format == "csv":
