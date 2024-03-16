@@ -46,20 +46,20 @@ def find_movies_with_number_title(movie_df):
     return movies_with_number_title_df
 
 # Question 3e
-#def join_with_rating_table(movie_df, rating_table_df):
-    # Doing a join operation with rating_table
-#    joined_df = movie_df.join(rating_table_df, on="movie_id")
-#    write_dataframe_to_csv(joined_df, "joined_df.csv")
-#    return joined_df
+def join_with_profitable_movies(movie_df, profitable_movies_df):
+    # using profitable_movies_df because i couldn't find rating_table.csv
+    joined_df = movie_df.join(profitable_movies_df, on="movie_id")
+    write_dataframe_to_csv(joined_df, "joined_with_profitable_movies.csv")
+    return joined_df
 
 # Question 3f
-#def check_schema_and_cast(movie_df):
+def check_schema_and_cast(joined_df):
     # Checking schema of the DataFrame
-#    movie_df.printSchema()
-#    movie_df = movie_df.withColumn("budget", movie_df["budget"].cast("float"))
-#    movie_df = movie_df.withColumn("revenue", movie_df["revenue"].cast("float"))
-#    write_dataframe_to_csv(movie_df, "movie_df_casted.csv")
-#    return movie_df
+    joined_df.printSchema()
+    joined_df = joined_df.withColumn("budget", joined_df["budget"].cast("float"))
+    joined_df = joined_df.withColumn("revenue", joined_df["revenue"].cast("float"))
+    write_dataframe_to_csv(joined_df, "movie_df_casted.csv")
+    return joined_df
 
 if __name__ == "__main__":
     # Question 3a
@@ -71,7 +71,7 @@ if __name__ == "__main__":
     # Question 3d
     movies_with_number_title_df = find_movies_with_number_title(movie_df)
     # Question 3e
-    #rating_table_df = spark.read.option("header", True).csv("rating_table.csv")
-    #joined_df = join_with_rating_table(movie_df, rating_table_df)
+    rating_table_df = spark.read.option("header", True).csv("rating_table.csv")
+    joined_df = join_with_profitable_movies(movie_df, rating_table_df)
     # Question 3f
-    #checked_and_casted_movie_df = check_schema_and_cast(movie_df)
+    checked_and_casted_movie_df = check_schema_and_cast(joined_df)
